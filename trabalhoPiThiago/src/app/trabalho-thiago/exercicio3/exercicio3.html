@@ -1,0 +1,16 @@
+<button (click)="aumentar()">+</button>
+<button (click)="diminuir()" [disabled]="numero === 0">-</button>
+
+<p>{{ numero }}</p>
+
+@if (numero === 0) {
+  <p>Idade não encontrada</p>
+} @else if (numero > 0 && numero < 12) {
+  <p>Criança</p>
+} @else if (numero >= 12 && numero <= 17) {
+  <p>Adolescente</p>
+} @else if (numero > 17 && numero <= 59){
+    <p>Adulto</p>
+} @else if ( numero >= 60) {
+    <p>VELHO!</p>
+}

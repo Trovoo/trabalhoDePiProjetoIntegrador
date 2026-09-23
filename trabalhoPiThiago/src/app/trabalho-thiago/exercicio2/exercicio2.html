@@ -1,0 +1,11 @@
+<div *ngIf="usuario; else blocoDeslogado">
+  <p>Usuário autenticado</p>
+</div>
+
+<ng-template #blocoDeslogado>
+  <p>Acesso não autorizado</p>
+</ng-template>
+
+<button (click)="aleternarLogin()">
+  {{ usuario ? 'Sair' : 'Entrar' }}
+</button>

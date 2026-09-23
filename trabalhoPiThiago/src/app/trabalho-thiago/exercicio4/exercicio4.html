@@ -1,0 +1,11 @@
+<h2>Produto: {{ produto }}</h2>
+<p>Quantidade: {{ quantidade }}</p>
+
+<button (click)="aumentar()">+</button>
+<button (click)="diminuir()" [disabled]="quantidade === 0">-</button>
+
+@if (quantidade > 0){
+    <p>Produto disponivel!</p>
+} @else{
+    <p>Sem estoque</p>
+}
