@@ -1,0 +1,16 @@
+.par {
+  background-color: #f0f0f0;
+}
+
+.impar {
+  background-color: #e0e0e0;
+}
+
+.primeiro {
+  font-weight: bold;
+  color: #0066cc;
+}
+
+.ultimo {
+  border: 2px dashed #ff0000;
+}

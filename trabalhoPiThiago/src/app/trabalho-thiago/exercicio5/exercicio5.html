@@ -1,0 +1,8 @@
+<h2>Exercício 5 - Lista de Nomes</h2>
+<ul>
+  <li *ngFor="let nome of nomes; let i = index; let ePrimeiro = first; let eUltimo = last">
+    Posição {{ i + 1 }}: {{ nome }}
+    <span *ngIf="ePrimeiro"> <strong> - Primeiro da lista</strong></span>
+    <span *ngIf="eUltimo"> <strong> - Último da lista</strong></span>
+  </li>
+</ul>
