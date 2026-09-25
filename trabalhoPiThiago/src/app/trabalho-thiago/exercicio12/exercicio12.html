@@ -1,0 +1,30 @@
+<div class="cadastro">
+  <h2>Cadastro simplificado de produtos</h2>
+
+  <label>
+    Nome:
+    <input type="text" [(ngModel)]="nome" name="nome" placeholder="Nome do produto">
+  </label>
+
+  <label>
+    Quantidade:
+    <input type="number" [(ngModel)]="quantidade" name="quantidade" placeholder="Quantidade">
+  </label>
+
+  <button (click)="cadastrar()">Cadastrar</button>
+
+  <p class="erro" *ngIf="mensagemErro">{{ mensagemErro }}</p>
+
+  <h3>Produtos cadastrados</h3>
+
+  <ul *ngIf="produtos.length > 0; else semProdutos">
+    <li *ngFor="let produto of produtos; let i = index">
+      {{ produto.nome }} — {{ produto.quantidade }}
+      <button (click)="excluir(i)">Excluir</button>
+    </li>
+  </ul>
+
+  <ng-template #semProdutos>
+    <p>Nenhum produto cadastrado.</p>
+  </ng-template>
+</div>

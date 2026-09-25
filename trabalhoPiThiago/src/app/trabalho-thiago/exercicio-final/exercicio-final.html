@@ -1,0 +1,144 @@
+<div class="container">
+
+  <header class="header">
+
+    <div>
+      <p class="subtitulo">DESAFIO FINAL</p>
+      <h1>Painel de Projetos</h1>
+      <p class="descricao">
+        Acompanhe o andamento dos projetos integradores,
+        suas equipes, notas e datas de entrega.
+      </p>
+    </div>
+    <div class="estatisticas">
+
+      <div class="estatistica">
+        <p>Total de projetos</p>
+        <strong>{{ totalProjetos }}</strong>
+      </div>
+
+      <div class="estatistica">
+        <p>Projetos concluídos</p>
+        <strong>{{ totalConcluidos }}</strong>
+      </div>
+    </div>
+  </header>
+
+
+  <section class="controles">
+    <label class="checkbox">
+      <input
+        type="checkbox"
+        [(ngModel)]="mostrarConcluidos"
+      >
+      <span>Mostrar projetos concluídos</span>
+    </label>
+
+  </section>
+  @if (projetosFiltrados.length === 0) {
+
+    <div class="vazio">
+
+      <h1>Nenhum projeto encontrado</h1>
+
+      <p>
+        Não existem projetos para exibir no momento.
+      </p>
+    </div>
+
+  } @else {
+    <ul class="lista-projetos">
+      @for (projeto of projetosFiltrados; track projeto.id) {
+        <li
+          class="projeto-card"
+          [class]="classeStatus(projeto.status)"
+        >
+          <div class="projeto-topo">
+            <div>
+              <p class="id-projeto">
+                Projeto #{{ projeto.id }}
+              </p>
+
+              <h1>
+                {{ projeto.titulo }}
+              </h1>
+
+            </div>
+
+            <span class="status">
+              {{ nomeStatus(projeto.status) }}
+            </span>
+
+          </div>
+          <div class="informacoes">
+
+            <div class="informacao">
+
+              <p>Equipe</p>
+
+              <strong>
+                {{ projeto.equipe }}
+              </strong>
+
+            </div>
+            <div class="informacao">
+
+              <p>Entrega</p>
+
+              <strong>
+                {{ projeto.entrega }}
+              </strong>
+
+            </div>
+            <div class="informacao">
+
+              <p>Nota</p>
+              @if (projeto.nota !== null) {
+
+                <strong
+                  [class.nota-baixa]="projeto.nota < 6"
+                  [class.nota-alta]="projeto.nota >= 6"
+                >
+                  {{ projeto.nota }}
+                </strong>
+              } @else {
+                <strong class="sem-nota">
+                  Não preenchida
+                </strong>
+              }
+            </div>
+
+          </div>
+
+          <div class="rodape-card">
+
+            @if (projeto.nota === null) {
+
+              <p class="aviso">
+                A nota ainda não foi preenchida.
+              </p>
+
+            } @else if (projeto.nota < 6) {
+
+              <p class="alerta">
+                Nota inferior a 6.
+              </p>
+
+            } @else {
+
+              <p class="sucesso">
+                Nota igual ou superior a 6.
+              </p>
+            }
+            <button
+              type="button"
+              (click)="alterarStatus(projeto)"
+            >
+              Alterar status
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</div>

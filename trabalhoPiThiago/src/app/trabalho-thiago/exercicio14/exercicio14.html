@@ -1,0 +1,41 @@
+<div class="cadastro">
+  <h2>Cadastro simplificado de produtos (sintaxe moderna)</h2>
+
+  <label>
+    Nome:
+    <input type="text" [(ngModel)]="nome" name="nome" placeholder="Nome do produto">
+  </label>
+
+  <label>
+    Quantidade:
+    <input type="number" [(ngModel)]="quantidade" name="quantidade" placeholder="Quantidade">
+  </label>
+
+  <button (click)="cadastrar()">Cadastrar</button>
+
+
+  @if (mensagemErro) {
+    <p class="erro">{{ mensagemErro }}</p>
+  }
+
+  <h3>Produtos cadastrados</h3>
+
+
+  <ul>
+    @for (produto of produtos; track produto.id; let i = $index) {
+      <li>
+        {{ produto.nome }} — {{ produto.quantidade }}
+        <button (click)="excluir(i)">Excluir</button>
+      </li>
+    } @empty {
+      <li>Nenhum produto cadastrado.</li>
+    }
+  </ul>
+</div>
+
+ <strong>
+    <h1>
+  Os exercícios 3 e 4 estão em seus respectivos componentes.
+  O exercício 13 foi refeito aqui no exercício 14, convertido para a sintaxe do Angular 17+.
+    </h1>
+</strong>

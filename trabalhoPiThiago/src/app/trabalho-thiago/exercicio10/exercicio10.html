@@ -1,0 +1,18 @@
+<h1>Promoção e Estilo Dinâmico</h1>
+
+<ul>
+  <li *ngFor="let produto of produtos">
+    <p [ngStyle]="{ 'font-weight': produto.promocao ? 'bold' : 'normal' }">
+      Nome: {{ produto.nome }}
+      <ng-container *ngIf="produto.promocao"> — Em promoção!</ng-container>
+    </p>
+
+    <p [ngStyle]="{ 'color': produto.promocao ? 'orange' : 'black' }">
+      Preço: {{ produto.preco | currency:'BRL' }}
+    </p>
+
+    <button (click)="alternarPromocao(produto)">
+      {{ produto.promocao ? 'Desativar promoção' : 'Ativar promoção' }}
+    </button>
+  </li>
+</ul>
